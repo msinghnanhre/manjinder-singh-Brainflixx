@@ -1,0 +1,196 @@
+@use "../../partials/mixins.scss" as *;
+@use "../../partials/variables" as *;
+@use "../../partials/colors" as *;
+
+
+.upload{
+    padding: $padding;
+
+    @include tablet{
+        padding: $padding $padding*2;
+    }
+    @include desktop{
+        padding: $padding $padding*2;
+        max-width: 90%;
+        margin-left: 5%;
+    }
+    &__title{
+        @include text-style(1.5rem, 2rem);
+        padding: $padding*2 0;
+        font-weight: 800;
+        @include tablet{
+            font-size: 2.5rem;
+            padding: $padding*2.5 0;
+        }
+        @include desktop{
+            font-size: 2.5rem;
+            padding: $padding*2.5 0;
+        }
+    }
+
+    &__btn{
+
+        @include tablet{
+            @include flex(flex-start, center){
+                flex-direction: row-reverse;
+                margin-right: 0;
+                padding-top: $padding*2.5;
+            }
+        }
+        @include desktop{
+            @include flex(flex-start, center){
+                flex-direction: row-reverse;
+                margin-right: 0;
+                
+            }
+            margin-top: $margin*4;
+        }
+
+        &-publish{
+            @include button-reset;
+            font-size: .85rem;
+            height: $size*3;
+            cursor: pointer;
+            padding: $padding/2 $padding*2;
+            width: 100%;
+            @include tablet{
+                max-width: 25%;
+            }
+            @include desktop{
+                max-width: 17%;
+            }
+        }
+
+        &-cancel{
+            margin-top: $margin;
+            outline: none;
+            border: none;
+            background: none;
+            color: $lightblue;
+            height: $size*3;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: .85rem;
+            padding: $padding/2 $padding*2;
+            width: 100%; 
+            
+            @include tablet{
+                margin: 0;
+                max-width: 25%;
+            }
+
+            @include desktop{
+                margin: 0;
+                max-width: 17%; 
+                height: 3rem;
+            }
+        }
+
+    }
+}
+
+.upload-section{
+    max-width: 100%;
+    overflow-x: hidden;
+    @include tablet{
+            border-top: 1px solid $mercury;
+            padding: 2.5rem 0;
+            border-bottom: 1px solid $mercury;
+    }
+
+    @include desktop{
+        @include flex(flex-start, flex-start){
+            width: 100%;
+            padding: 2.5rem 0;
+        }
+    }
+    &__left{
+        @include tablet{
+            max-width: 50%;
+        }
+
+        @include desktop{
+            max-width: 40%;
+           // height: 200px;
+        }
+
+        &-title{
+        @include text-style(.85rem, 1.25rem);
+        color: $silver;
+            @include text-style(.75rem, 1.25rem);
+            @include tablet{
+                font-size: 1rem;
+                line-height:2rem; 
+        }
+
+            @include desktop{
+                font-size: 1rem;
+                line-height:2rem; 
+            }
+        }
+
+        img{
+            max-width: 100%;
+            border-radius: 4px;
+        }
+    }
+
+    &__right{
+        margin-top: $margin;
+        @include desktop{
+            margin: 0;
+            width: 60%;
+            padding-left: $padding*2;
+        }
+    }
+
+    &__label{
+        @include text-style(.85rem, 1.25rem);
+        font-weight: 600;
+        color: $silver;
+            @include text-style(.75rem, 1.25rem);
+            @include tablet{
+                font-size: 1rem;
+                line-height:2rem; 
+        }
+
+            @include desktop{
+                font-size: 1rem;
+                line-height:2rem; 
+            }
+    }
+
+    &__input{
+        @include form-reset;
+        width: 100%;
+        outline: none;
+        padding: $padding/2;
+        margin-bottom: $margin;
+        resize: none;
+        height: 3rem;
+        &::placeholder{
+                color: $black;
+            }
+        &:focus{
+            border: 1px solid $lightblue;
+        }
+        &:active{
+            outline: none;
+            border: 1px solid $lightblue;
+        }
+        @include tablet{
+            padding: $padding;
+        }
+
+        @include desktop{
+            padding: $padding*1.2;
+        }
+        &--height{
+            height: 10vh;
+            @include desktop{
+                 min-height: 9vh;
+                 max-height: 15vh;
+                }
+        }
+    }
+}

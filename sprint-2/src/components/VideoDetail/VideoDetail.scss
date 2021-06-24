@@ -1,0 +1,121 @@
+@use "../../partials/colors.scss" as *;
+@use "../../partials/typography.scss" as *;
+@use "../../partials/mixins.scss" as *;
+@use "../../partials/_variables.scss" as *;
+
+
+.video-detail{ 
+    &__top{
+        border-bottom: 1px solid $mercury;
+        margin: $margin*1.5 $margin;
+
+        @include tablet{
+            margin:0 $margin*3;
+        }
+        @include desktop{
+            margin-right: 0;
+        }
+    }
+
+    &__title{
+        @include text-style(1.5rem, 2rem);
+        font-weight: 800;
+        @include tablet{
+            font-size: 2.5rem;
+            padding: $padding 0;
+        }
+        @include desktop{
+            font-size: 2.5rem;
+            padding: $padding 0;
+        }
+    }
+
+    &__social{
+        padding: $padding 0;
+        @include tablet{
+            @include flex(space-between, center);
+
+        }
+        @include desktop{
+            @include flex(space-between, center);
+            padding-right: $padding*2;
+        }
+    }
+
+    &__channel{
+        @include text-style(1rem, 1.2rem); 
+        font-weight:700;
+        padding-right: $padding;
+         
+    }
+    &__timestamp{
+        @include text-style(.90rem, 1.25rem);
+        font-weight: 400;
+        color: $silver;     
+   
+    }
+    &__right{
+        padding: $padding*2 0 $padding/2 0;
+        @include tablet{
+            padding: 0;
+        }
+        @include desktop{
+            padding: 0;
+        }
+    }
+    &__views{
+        margin-right: $margin*3.5;
+        padding-left: $padding*2;
+        position: relative;
+
+        &::before{
+            content: "";
+            background-image: $views;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0.2rem;
+            left: 0;
+            background-repeat: no-repeat;
+            @include tablet{
+                right: 2rem;
+                top: .1rem;
+            }
+            @include desktop{
+                top: .15rem;
+            }
+        }
+    }
+    &__likes{
+        position: relative;
+        &::before{ 
+            cursor: pointer;
+            content: "";
+            background-image: $likeIcon;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            right: 1.5rem;
+            top: .1rem;
+            background-repeat: no-repeat;
+        }
+    }
+
+    &__bottom{
+        @include text-style(.813rem, 1.125rem);
+        padding: 0 $padding $padding $padding;
+
+        @include tablet{  
+            @include text-style(0.875rem,1.375rem);
+            padding: $padding 0 $padding $padding;
+            margin-left: $margin*2;
+            width: 70%;
+
+        }
+        @include desktop{ 
+            @include text-style(0.875rem,1.375rem);
+            max-width: 78%;
+            
+        }
+    }
+}

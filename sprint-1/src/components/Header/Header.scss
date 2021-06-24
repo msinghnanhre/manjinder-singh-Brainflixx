@@ -1,0 +1,122 @@
+@use "../../partials/colors.scss" as *;
+@use "../../partials/typography.scss" as *;
+@use "../../partials/mixins.scss" as *;
+@use "../../partials/_variables.scss" as *;
+
+.header{
+    text-align: center;
+    padding: $padding;
+    @include tablet{
+        @include flex(space-between, center);
+        padding: $padding $padding*2;
+    }
+
+    @include desktop{
+        @include flex(space-between, center);
+        padding: $padding $padding*2;   
+    }
+}
+
+
+.nav{
+    width: 100%;
+    @include tablet{
+        @include flex(space-between, center){
+            width: 60%;
+        };
+    }
+
+    @include desktop{
+        @include flex(space-between, center){
+            width: 40%;
+        };        
+    }
+    &__form{
+        padding: $padding/2 0;
+        margin-right: $size/1.85;
+        position: relative;
+        @include tablet{
+            width: 55%;
+        }
+
+        @include desktop{
+            width: 55%;
+        }
+        &-search{
+            background-image: $search;
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 1.5rem;
+            left: .75rem;
+            width: 18px;
+            height: 100%;
+        }
+        &-input{
+            outline: none;
+            @include form-reset();
+            background-color: $alabaster;
+            width: 100%;
+            height: 3rem;
+            padding-left: 2.5rem;
+
+            &:focus{
+                border:1px solid $lightblue;
+            }
+            &:active{
+                border:1px solid $lightblue;
+            }
+        }
+    }
+    &__button{
+        @include button-reset;
+        height: $size*3;
+        cursor: pointer;
+        position: relative;
+        margin-right: $margin;
+        width: 100%;
+
+        &:hover{
+            background-color: $darkblue;
+        }
+
+        @include tablet{
+            margin: 0 $margin;
+        }
+
+        @include desktop{
+            margin: 0 $margin;
+        }
+
+        &-icon{
+            margin: $padding/4 $padding 0 0;
+            width: 12px;
+            height: 12px;
+        } 
+    }
+    &__user{
+        @include flex(space-between, center);
+        @include tablet{
+            width: 55%;
+        }
+        @include desktop{
+            width: 55%;
+        }
+        &-img{
+            min-width: 3rem;
+            max-width: 3rem;
+            height: 3rem;
+            border-radius:50%;
+            overflow: hidden;
+            @include tablet{
+                width: auto;
+            }
+            
+            &--avatar{
+                height: 100%;
+                @include tablet{
+                    width: auto;
+                }
+            }
+        }
+    }
+}

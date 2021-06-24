@@ -1,0 +1,47 @@
+@use "./_colors.scss" as *;
+@use "./variables" as *;
+
+@mixin flex($justify-content, $align-items){
+    display: flex;
+    justify-content: $justify-content;
+    align-items: $align-items;
+    @content
+};
+
+@mixin form-reset{
+    border: 1px solid $mercury;
+    border-radius: 4px;
+    color: $black;
+    @content
+};
+
+@mixin button-reset{
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    outline: none;
+    color: $alabaster;
+    background-color: $lightblue;
+    @content
+};
+
+
+@mixin tablet{
+    @media (min-width:$t-min-width) and (max-width: $t-max-width){
+        @content
+    }
+};
+
+//desktop media query
+@mixin desktop{
+    @media (min-width: $d-min-width){
+        @content
+    }
+};
+
+@mixin text-style($font-size, $line-height){
+    font-size: $font-size;
+    line-height: $line-height;
+    @content
+}

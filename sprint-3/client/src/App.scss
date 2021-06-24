@@ -1,0 +1,11 @@
+@use "./partials/mixins.scss" as * ;
+@use "./partials/colors.scss" as *;
+
+
+.App{
+    color: $black;
+    font-family: "Avenir";
+}
+
+
+

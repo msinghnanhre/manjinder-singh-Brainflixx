@@ -1,0 +1,22 @@
+@use "./partials/mixins.scss" as * ;
+@use "./partials/colors.scss" as *;
+
+
+.App{
+    color: $black;
+    font-family: "Avenir";
+}
+.main{
+    @include desktop{
+        @include flex(flex-start, flex-start);
+        margin-left:7.5%;
+        width: 85%;
+    }
+    &__right{
+        @include desktop{
+            width: 80%;
+            border-right: 1px solid $mercury;
+        }
+    }
+}
+

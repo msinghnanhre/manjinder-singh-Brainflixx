@@ -1,0 +1,102 @@
+@use "../../partials/colors.scss" as *;
+@use "../../partials/typography.scss" as *;
+@use "../../partials/mixins.scss" as *;
+@use "../../partials/_variables.scss" as *;
+
+.videolist-wrapper{ 
+    margin: $margin;
+    width: 95%;
+
+        @include tablet{
+            width: 60%;
+            margin-left: $margin*3;
+        }
+        @include desktop{
+            margin-left: $margin*2;
+        }
+    &__title{
+        @include text-style(.85rem, 1.25rem);
+        color: $silver;
+        padding: $padding*1.5 0 $padding*2.5 0;
+    }
+}
+
+
+.videolist{
+    @include flex(flex-start,flex-start){
+        flex-wrap: wrap;
+        margin-bottom: $margin*1.5;
+    };
+    
+    &__img-container{
+        width: 115px;
+        height:70px;
+        margin-right: $margin;
+        overflow: hidden;
+        border-radius: 4px;
+        cursor: pointer;
+            @include tablet{
+                width: 165px;
+                height: 90px;
+            }
+            @include desktop{
+                height: 85px;
+                width: 135px;
+            }
+
+    }
+    &__img{
+        width: 100%;
+        height: 100%;
+    }
+
+    &__description{
+        @include flex(flex-start, flex-start){
+            flex-direction: column;
+        }
+        height: 70px;
+        text-align: left;
+        width: 50%;
+
+        @include tablet{
+            @include flex(space-between, flex-start);
+            height: 90px;
+            padding-left: $padding/2;
+        }
+        @include desktop{
+            height: 75px;
+        }
+    }
+    &__title{
+        font-size: 13px;
+        width: 80%;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;  
+        overflow: hidden;
+        margin-bottom: $margin;
+
+        @include tablet{
+            @include text-style(1rem, 1.5rem);
+            margin-bottom: $margin/2;
+        }
+
+        @include desktop{
+            @include text-style(1rem, 1.5rem);
+            margin-bottom: $margin/2;
+        }
+    }
+
+    &__channel{
+        @include text-style(.813rem, 1.125rem);      
+
+        @include tablet{
+            @include text-style(.875rem, 1.25rem);
+            padding-bottom: $padding/2;
+            
+        }
+        @include desktop{
+            @include text-style(.875rem, 1.25rem);
+        }
+    }
+}
