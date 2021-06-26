@@ -81,9 +81,10 @@ export default class Home extends Component {
 
     //add new comment 
     handleSubmit = (event) => {
+        //write if else statment to post comments based on url
         const { id } = this.state.defaultVideo
         this.state.usercomment !== "" || this.state.name === "" ?
-            axios.post(`http://localhost:8080/api/videos/${id}/comments`,
+            axios.post(`http://localhost:8080/api/videos/${id}`,
             {
                 name: this.state.name,
                 comment: this.state.usercomment

@@ -14,6 +14,7 @@ router.post('/videos/:videoId', ((req, res) => {
                 timestamp: Date.now()
             }
         let found = videos.find(item => item.id === videoId)
+        console.log("post ")
         found.comments.push(newComment)
         res.status(200).json(newComment)
     }
