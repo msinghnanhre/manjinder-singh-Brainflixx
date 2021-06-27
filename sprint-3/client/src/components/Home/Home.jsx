@@ -84,7 +84,7 @@ export default class Home extends Component {
         //write if else statment to post comments based on url
         const { id } = this.state.defaultVideo
         this.state.usercomment !== "" || this.state.name === "" ?
-            axios.post(`http://localhost:8080/api/videos/${id}`,
+            axios.post(`http://localhost:8080/api/videos/${id}/comments`,
             {
                 name: this.state.name,
                 comment: this.state.usercomment
@@ -101,6 +101,17 @@ export default class Home extends Component {
             ) :
             alert("Enter Name and comment")
         event.preventDefault()
+    }
+    //add likes
+    addLike = () => {
+        const { id } = this.state.defaultVideo
+        axios.put(`http://localhost:8080/api/videos/${id}/likes`)
+            .then(res => {
+                this.getVideo(id)
+                console.log(res)
+            }).catch(err => {
+                console.log(err)
+            })
     }
 
     render() {
@@ -127,6 +138,7 @@ export default class Home extends Component {
                             clickHandler={this.clickHandler}
                             handleChange={this.handleChange}
                             handleSubmit={this.handleSubmit}
+                            addLike={this.addLike}
                         />
                     </div>
 

@@ -1,8 +1,10 @@
+import axios from "axios"
 import Comments from "../Comments/Comments"
 import Form from "../Form/Form"
+import { getVideos } from "../../utils/api"
 import "./VideoDetail.scss"
 
-function VideoDetail({ videoDetail, clickHandler, match, handleChange, handleSubmit, usercomment, name }) {
+function VideoDetail({ videoDetail, clickHandler, match, handleChange, handleSubmit, usercomment, name, addLike }) {
     let datetime = new Date(videoDetail.timestamp).toLocaleDateString("en-us", { day: "2-digit", month: "2-digit", year: "numeric" })
 
     return (
@@ -20,7 +22,7 @@ function VideoDetail({ videoDetail, clickHandler, match, handleChange, handleSub
                         </div>
                         <div className="video-detail__right">
                             <span className="video-detail__views">{videoDetail.views}</span>
-                            <span className="video-detail__likes">{videoDetail.likes}</span>
+                            <span className="video-detail__likes" onClick={addLike}>{videoDetail.likes}</span>
                         </div>
                     </section>
                 </section>

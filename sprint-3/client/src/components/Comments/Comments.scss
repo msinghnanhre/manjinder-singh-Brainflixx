@@ -15,10 +15,9 @@
     }
     @include desktop{
         @include flex(flex-start, flex-start){
-            width: 90%;
+            width: 100%;
         }
-        margin: $margin*2 0 0 $margin;
-        // padding: 0 $padding*2 $padding*1.5 0;
+        margin: $margin*2 $margin*2 0 $margin;
     }
 
     &__avatar{
@@ -40,7 +39,7 @@
             padding-left: $padding;
         }
         @include desktop{
-            width: 100%;
+            width: 85%;
         }
 
     }

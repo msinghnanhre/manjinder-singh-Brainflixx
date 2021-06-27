@@ -4,14 +4,11 @@ const { v4: uuidv4 } = require('uuid');
 const fs = require('fs');
 const videos = require('../data/videos.json');
 
-let vid = videos
+let videoCopy = videos
 
 
 router.get('/videos', ((req, res) => {
     const data = videos.map(item => {
-        // if (!item.image) {
-        //     item.image = videos[3].image
-        // }
         return {
             id: item.id,
             title: item.title,
@@ -32,19 +29,23 @@ router.post('/videos', ((req, res) => {
         channel,
         image: '/images/upload.jpg',
         description,
-        views: 1000,
-        likes: 500,
+        views: "1000",
+        likes: "59500",
         duration: "3",
         timestamp: Date.now(),
         comments: []
     }
-        vid.push(newVideo)
-        const dataObject = JSON.stringify(vid, null, 2);
-        console.log(dataObject)
-        fs.writeFile('data/videos.json', dataObject, (err) => {
-            console.log(err)
-        })
-    res.status(200).send(videos)
+    if (newVideo) {
+        videoCopy.push(newVideo)
+        const dataObject = JSON.stringify(videoCopy, null, 2);
+        //write to json file
+        writeToFile(dataObject)
+        res.status(200).send(videos)
+    }
+    else {
+        res.status(400).send(err)
+    }
+
 }))
 
 router.get('/videos/:videoId', ((req, res) => {
@@ -58,4 +59,37 @@ router.get('/videos/:videoId', ((req, res) => {
     }
 }))
 
+router.put('/videos/:videoId/likes', ((req, res) => {
+    let videoId = req.params.videoId
+    let found = videoCopy.find(item => item.id === videoId)
+    let numberOfLikes = found.likes
+
+    //convert to desired format to edit and back to json before saving to file
+    let newLikes = Number(numberOfLikes.replace(",", "")) + 1
+    const formattedLikes = newLikes.toString().split("")
+    
+    const insert = formattedLikes.splice(3, 0, ",").join("")
+    const joined = formattedLikes.join("")
+
+    found.likes = joined
+    const dataObject = JSON.stringify(videoCopy, null, 2);
+    //write to json file
+    writeToFile(dataObject)
+
+    res.status(201).send(found)
+    console.log()
+}))
+
 module.exports = router;
+
+function writeToFile(data) {
+    fs.writeFile('data/videos.json', data, (err) => {
+        if (!err) {
+            console.log("File written Successfully")
+        } else {
+            console.log(err)
+        }
+    })
+}
+
+
