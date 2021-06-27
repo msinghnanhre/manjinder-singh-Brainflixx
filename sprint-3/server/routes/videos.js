@@ -30,7 +30,7 @@ router.post('/videos', ((req, res) => {
         id: uuidv4(),
         title,
         channel: "New Video Channel test 1",
-        image: videos[3].image,
+        image: '/images/upload.jpg',
         description,
         views: 0,
         likes: 0,
