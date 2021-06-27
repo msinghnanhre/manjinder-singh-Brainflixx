@@ -24,6 +24,31 @@
         "id": "cc6f173d-9e9d-4501-918d-bc11f15a8e14",
         "likes": 0,
         "timestamp": 1544595784046
+      },
+      {
+        "name": "John Doe",
+        "comment": "sdfsdfasdf",
+        "id": "64408279-4765-49c2-9351-3fe8cc907d84",
+        "timestamp": 1624487006696,
+        "likes": 0
+      },
+      {
+        "name": "new",
+        "comment": "New Comment 4",
+        "likes": 0,
+        "timestamp": 1624688682621
+      },
+      {
+        "name": "new",
+        "comment": "New Comment 5",
+        "likes": 0,
+        "timestamp": 1624688697836
+      },
+      {
+        "name": "new",
+        "comment": "New Comment 6",
+        "likes": 0,
+        "timestamp": 1624688709619
       }
     ]
   },
@@ -306,16 +331,5 @@
         "timestamp": 1542262984046
       }
     ]
-  },
-  {
-    "channel": "New Video Channel test 1",
-    "title": "Title",
-    "id": "bebd9d7b-82c6-4c17-9571-e79ef3dcbc8b",
-    "likes": 0,
-    "views": 0,
-    "image": "/images/img-4.jpg",
-    "description": "Description",
-    "timestamp": 1624752984406,
-    "comments": []
   }
 ]

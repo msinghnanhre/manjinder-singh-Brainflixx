@@ -1,36 +1,43 @@
 const express = require('express')
 const router = express.Router();
 const videos = require('../data/videos.json')
+const { v4: uuidv4 } = require('uuid');
 const fs = require('fs');
 
-router.post('/videos/:videoId', ((req, res) => {
-    const { name, comment } = req.body
-    if (name && comment) {
-        const { videoId } = req.params
-            const newComment = {
-                name,
-                comment,
-                likes: 0,
-                timestamp: Date.now()
-            }
-        let found = videos.find(item => item.id === videoId)
-        console.log("post ")
-        found.comments.push(newComment)
-        res.status(200).json(newComment)
+let vid = videos
+//console.log(vid)
+router.post("/videos/:videoId", ((req, res) => {
+    let id = (req.params.videoId)
+    let foundVid = vid.find(video => video.id === id)
+    if (req.body.name && req.body.comment) {
+        let newObj = {
+            name: req.body.name,
+            comment: req.body.comment,
+            id: uuidv4(),
+            timestamp: Date.now(),
+            likes: 0
+        }
+        foundVid.comments.push(newObj)
+        const dataObject = JSON.stringify(vid, null, 2);
+        fs.writeFile('data/videos.json', dataObject , (err) => {
+            console.log(err)
+        })
     }
-    else {
-        res.status(400).send("Must have comment and Name properties")
-    }     
-}));
+    res.send(foundVid.comments)
+}))
 
 
 router.delete('/videos/:videoId/comments/:commentId', ((req, res) => {
     const { videoId, commentId } = req.params
-    const selectedVideo = videos.find(video => video.id === videoId)
+    const selectedVideo = vid.find(video => video.id === videoId)
     const comments = selectedVideo.comments
     const commentIndex = comments.findIndex((comment) => comment.id === commentId)
     const comment = comments[commentIndex]
     comments.splice(commentIndex, 1)
+    const dataObject = JSON.stringify(vid, null, 2);
+    fs.writeFile('data/videos.json', dataObject, (err) => {
+        console.log(err)
+    })
     res.json(comment)  
 }))
 

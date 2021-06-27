@@ -1,14 +1,17 @@
 const express = require('express')
 const router = express.Router();
-// const {uuid: v4} = require('uuid').v
-//get videos from videos.json
+const { v4: uuidv4 } = require('uuid');
+const fs = require('fs');
 const videos = require('../data/videos.json');
+
+let vid = videos
+
 
 router.get('/videos', ((req, res) => {
     const data = videos.map(item => {
-        if (!item.image) {
-            item.image = videos[3].image
-        }
+        // if (!item.image) {
+        //     item.image = videos[3].image
+        // }
         return {
             id: item.id,
             title: item.title,
@@ -24,15 +27,23 @@ router.get('/videos', ((req, res) => {
 router.post('/videos', ((req, res) => {
     const { title, description } = req.body
     const newVideo = {
-        channel: "somehtin",
+        id: uuidv4(),
         title,
-        id: "temp",
-        likes: 0,
+        channel: "New Video Channel test 1",
+        image: videos[3].image,
+        description,
         views: 0,
-        imageg: '',
-        description
+        likes: 0,
+        duration: "3",
+        timestamp: Date.now(),
+        comments: []
     }
-    videos.push(newVideo)
+        vid.push(newVideo)
+        const dataObject = JSON.stringify(vid, null, 2);
+        console.log(dataObject)
+        fs.writeFile('data/videos.json', dataObject, (err) => {
+            console.log(err)
+        })
     res.status(200).send(videos)
 }))
 
