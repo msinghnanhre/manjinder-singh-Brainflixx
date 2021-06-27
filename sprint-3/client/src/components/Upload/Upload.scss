@@ -29,7 +29,6 @@
     }
 
     &__btn{
-
         @include tablet{
             @include flex(flex-start, center){
                 flex-direction: row-reverse;
@@ -40,8 +39,7 @@
         @include desktop{
             @include flex(flex-start, center){
                 flex-direction: row-reverse;
-                margin-right: 0;
-                
+                //margin-right: 0;  
             }
             margin-top: $margin*4;
         }
@@ -57,7 +55,7 @@
                 max-width: 25%;
             }
             @include desktop{
-                max-width: 17%;
+                width: 25%;
             }
         }
 
@@ -80,8 +78,9 @@
             }
 
             @include desktop{
-                margin: 0;
-                max-width: 17%; 
+                margin-top: 0;
+                width: 25%; 
+                //margin-right: 2rem;
                 height: 3rem;
             }
         }
@@ -110,11 +109,11 @@
         }
 
         @include desktop{
-            max-width: 40%;
-           // height: 200px;
+            width: 650px;
         }
 
         &-title{
+
         @include text-style(.85rem, 1.25rem);
         color: $silver;
             @include text-style(.75rem, 1.25rem);
@@ -188,8 +187,7 @@
         &--height{
             height: 10vh;
             @include desktop{
-                 min-height: 9vh;
-                 max-height: 15vh;
+                height: 100px;
                 }
         }
     }

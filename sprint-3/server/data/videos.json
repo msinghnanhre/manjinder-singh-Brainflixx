@@ -306,28 +306,5 @@
         "timestamp": 1542262984046
       }
     ]
-  },
-  {
-    "channel": "New Video Channel test",
-    "title": "Title",
-    "id": "bebd9d7b-82c6-4c17-9571-e79ef3dcbc8b",
-    "likes": 0,
-    "views": 0,
-    "image": "/images/upload.jpg",
-    "description": "Description",
-    "timestamp": 1624752984406,
-    "comments": []
-  },
-  {
-    "id": "8eb73b51-f06c-4d0b-b78b-2f8acc9cdce1",
-    "title": "sa",
-    "channel": "New Video Channel test 1",
-    "image": "/images/upload.jpg",
-    "description": "savqer",
-    "views": 0,
-    "likes": 0,
-    "duration": "3",
-    "timestamp": 1624754272769,
-    "comments": []
   }
 ]

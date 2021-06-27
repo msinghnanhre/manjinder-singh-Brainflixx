@@ -25,15 +25,15 @@ router.get('/videos', ((req, res) => {
 }));
 
 router.post('/videos', ((req, res) => {
-    const { title, description } = req.body
+    const { title, description , channel} = req.body
     const newVideo = {
         id: uuidv4(),
         title,
-        channel: "New Video Channel test 1",
+        channel,
         image: '/images/upload.jpg',
         description,
-        views: 0,
-        likes: 0,
+        views: 1000,
+        likes: 500,
         duration: "3",
         timestamp: Date.now(),
         comments: []
@@ -48,9 +48,14 @@ router.post('/videos', ((req, res) => {
 }))
 
 router.get('/videos/:videoId', ((req, res) => {
-    let videoIds  = req.params.videoId
-    let found = videos.find(item => item.id === videoIds)
-    res.status(200).json(found)
+    let videoId  = req.params.videoId
+    let found = videos.find(item => item.id === videoId)
+    if (found) {
+        res.status(200).json(found)
+    }
+    else {
+        res.status(400).json(err)
+    }
 }))
 
 module.exports = router;

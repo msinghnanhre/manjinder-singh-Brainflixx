@@ -3,26 +3,23 @@ import "./Upload.scss";
 import axios from "axios";
 
 const Upload = ({history}) => {
-    const onPublish = () => {
-
-    }
 
     const uploadVideo = (e) => {
         e.preventDefault()
         const newVideo = {
             title: e.target.title.value,
+            channel: e.target.channel.value,
             description: e.target.description.value
         }
 
         axios.post(`http://localhost:8080/api/videos`,
             newVideo).then(res => {
-            console.log(res)
+                console.log(res)
             }).catch(err => {
-            console.log(err)
+                console.log(err)
             })
         history.push("/")
         alert("Video Uploaded")
-        // console.log(newVideo)
     }
 
     const handleClick = () => {
@@ -45,9 +42,19 @@ const Upload = ({history}) => {
                         <input className="upload-section__input"
                             name="title"
                             id="title"
-            
                             type="text"
                             placeholder="Write Comment here"
+                            required
+                        />
+                        <label className="upload-section__label"
+                            htmlFor="channel">ADD CHANNEL NAME
+                        </label>
+                        <input className="upload-section__input"
+                            name="channel"
+                            id="channel"
+                            type="text"
+                            placeholder="Enter Channel Name"
+                            required
                         />
                         <label className="upload-section__label"
                             htmlFor="description">ADD A VIDEO DESCRIPTION
@@ -55,12 +62,12 @@ const Upload = ({history}) => {
                         <textarea className="upload-section__input upload-section__input--height"
                             name="description"
                             id="description"
-                            
                             type="text"
-                            placeholder="Add a description of your video" >
+                            placeholder="Add a description of your video"
+                            required >
                         </textarea>
                         <section className="upload__btn">
-                            <input className="upload__btn-publish" type="submit" value="PUBLISH" onClick={onPublish} />
+                            <input className="upload__btn-publish" type="submit" value="PUBLISH" />
                             <button className="upload__btn-cancel" type="button" onClick={handleClick} >CANCEL</button>
                         </section>
                     </form>
