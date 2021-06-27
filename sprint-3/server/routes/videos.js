@@ -62,22 +62,25 @@ router.get('/videos/:videoId', ((req, res) => {
 router.put('/videos/:videoId/likes', ((req, res) => {
     let videoId = req.params.videoId
     let found = videoCopy.find(item => item.id === videoId)
-    let numberOfLikes = found.likes
+    if (found) {
+        let numberOfLikes = found.likes
 
-    //convert to desired format to edit and back to json before saving to file
-    let newLikes = Number(numberOfLikes.replace(",", "")) + 1
-    const formattedLikes = newLikes.toString().split("")
-    
-    const insert = formattedLikes.splice(3, 0, ",").join("")
-    const joined = formattedLikes.join("")
+        //convert to desired format to edit and back to json before saving to file
+        let newLikes = Number(numberOfLikes.replace(",", "")) + 1
+        const formattedLikes = newLikes.toString().split("")
 
-    found.likes = joined
-    const dataObject = JSON.stringify(videoCopy, null, 2);
-    //write to json file
-    writeToFile(dataObject)
+        const insert = formattedLikes.splice(3, 0, ",").join("")
+        const joined = formattedLikes.join("")
 
-    res.status(201).send(found)
-    console.log()
+        found.likes = joined
+        const dataObject = JSON.stringify(videoCopy, null, 2);
+        //write to json file
+        writeToFile(dataObject)
+
+        res.status(201).json(found)
+    } else {
+        res.status(400).json(err)
+    }
 }))
 
 module.exports = router;
