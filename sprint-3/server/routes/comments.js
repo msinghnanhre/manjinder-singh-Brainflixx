@@ -23,8 +23,9 @@ router.post("/videos/:videoId/comments", ((req, res) => {
         fs.writeFile('data/videos.json', dataObject , (err) => {
             console.log(err)
         })
+        res.status(200).send(newObj)
     }
-    res.status(200).send(newObj)
+    
 }))
 
 //router for deleting a comment
