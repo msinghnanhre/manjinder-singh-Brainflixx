@@ -2,7 +2,7 @@ import Video from "../Video/Video"
 import VideoDetail from "../VideoDetail/VideoDetail"
 import VideoList from "../VideoList/VideoList"
 import "./Home.scss";
-import { getVideos, getVideoFromId, deleteComment} from "../../utils/api.js"
+import { getVideos, getVideoFromId, deleteComment, URL} from "../../utils/api.js"
 import { Component } from 'react'
 import axios from "axios";
 
@@ -84,7 +84,7 @@ export default class Home extends Component {
         //write if else statment to post comments based on url
         const { id } = this.state.defaultVideo
         this.state.usercomment !== "" || this.state.name === "" ?
-            axios.post(`http://localhost:8080/api/videos/${id}/comments`,
+            axios.post(`${URL}api/videos/${id}/comments`,
             {
                 name: this.state.name,
                 comment: this.state.usercomment
@@ -105,7 +105,7 @@ export default class Home extends Component {
     //add likes
     addLike = () => {
         const { id } = this.state.defaultVideo
-        axios.put(`http://localhost:8080/api/videos/${id}/likes`)
+        axios.put(`${URL}api/videos/${id}/likes`)
             .then(res => {
                 this.getVideo(id)
                 console.log(res)

@@ -1,5 +1,5 @@
 import axios from "axios";
-const URL = 'https://brainflix-project.herokuapp.com/'
+export const URL = 'https://brainflix-project.herokuapp.com/'
 
 //get all videos
 export const getVideos = () => {

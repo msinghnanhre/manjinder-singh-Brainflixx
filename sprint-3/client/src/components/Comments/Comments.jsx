@@ -1,6 +1,7 @@
 import "./Comments.scss";
 import { Component } from "react"
 
+
 class Comments extends Component {
     render() {
         if (this.props.comments === null) {
@@ -9,7 +10,7 @@ class Comments extends Component {
         return (
             <>
                 {
-                    this.props.videoDetail.comments.reverse().map(comment => {
+                    this.props.videoDetail.comments.map(comment => {
                         let datetime = new Date(comment.timestamp).toLocaleDateString("en-us", { day: "2-digit", month: "2-digit", year: "numeric" })
 
                         return (
