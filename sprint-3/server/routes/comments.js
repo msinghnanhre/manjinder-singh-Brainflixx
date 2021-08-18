@@ -25,8 +25,8 @@ router.post("/videos/:videoId/comments", ((req, res) => {
         const dataObject = JSON.stringify(videoCopy, null, 2);
         fs.writeFile('data/videos.json', dataObject , (err) => {
             console.log(err)
+            res.status(200).send(newObj)
         })
-        res.status(200).send(newObj)
     }
     
 }))

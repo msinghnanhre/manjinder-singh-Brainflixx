@@ -9,9 +9,13 @@ const commentsRoutes = require("./routes/comments");
 require("dotenv").config();
 const port = process.env.PORT || 8080;
 
+var path = require('path')
+
+process.env.PWD = process.cwd();
+app.use(express.static(path.join(process.env.PWD, 'public')));
+
 //middleware
 app.use(express.json());
-app.use(express.static("public"))
 app.use(cors());
 
 
