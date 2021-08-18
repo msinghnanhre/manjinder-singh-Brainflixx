@@ -8,6 +8,9 @@ let videoCopy = videos
 
 router.post("/videos/:videoId/comments", ((req, res) => {
     let id = (req.params.videoId)
+    // if (id === undefined) {
+    //     id =videoCopy[0].id
+    // }
     let foundVid = videoCopy.find(video => video.id === id)
     if (req.body.name && req.body.comment) {
         //create new comment obj

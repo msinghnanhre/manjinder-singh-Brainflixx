@@ -1,10 +1,11 @@
 import axios from "axios";
+const URL = 'https://brainflix-project.herokuapp.com/'
 
 //get all videos
 export const getVideos = () => {
     return new Promise((resolve, reject) => {
         axios
-            .get(`http://localhost:8080/api/videos`
+            .get(`${URL}api/videos`
             )
             .then(res => {
                 resolve(res)
@@ -19,7 +20,7 @@ export const getVideos = () => {
 //get video from Id
 export const getVideoFromId = (id) => {
     return new Promise((resolve, reject) => {
-        axios.get(`http://localhost:8080/api/videos/${id}`)
+        axios.get(`${URL}api/videos/${id}`)
             .then(res => {
             resolve(res)
             })
@@ -32,7 +33,7 @@ export const getVideoFromId = (id) => {
 //delete a comment from video Id and comment Id
 export const deleteComment = (videoId, commentId) => {
     return new Promise((resolve, reject) => {
-        axios.delete(`http://localhost:8080/api/videos/${videoId}/comments/${commentId}`)
+        axios.delete(`${URL}api/videos/${videoId}/comments/${commentId}`)
             .then(res => [
             resolve(res)
             ])
