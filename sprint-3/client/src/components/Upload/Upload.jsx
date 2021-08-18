@@ -1,6 +1,7 @@
 import uploadIcon from "../../assets/Images/Upload-video-preview.jpg"
 import "./Upload.scss";
 import axios from "axios";
+import {URL} from "../../utils/api.js"
 
 const Upload = ({history}) => {
 
@@ -12,7 +13,7 @@ const Upload = ({history}) => {
             description: e.target.description.value
         }
 
-        axios.post(`http://localhost:8080/api/videos`,
+        axios.post(`${URL}api/videos`,
             newVideo).then(res => {
                 console.log(res)
             }).catch(err => {

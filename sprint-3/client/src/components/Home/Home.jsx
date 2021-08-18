@@ -89,11 +89,12 @@ export default class Home extends Component {
                 name: this.state.name,
                 comment: this.state.usercomment
             }).then(res => {
-                this.getVideo(id)
+                
                 this.setState({
                     usercomment: "",
                     name: ""
                 })
+                this.getVideo(id)
             })
             .catch(err => {
                 console.log(err)
