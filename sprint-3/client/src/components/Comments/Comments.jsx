@@ -10,7 +10,8 @@ class Comments extends Component {
             <>
                 {
                     this.props.videoDetail.comments.reverse().map(comment => {
-                        let datetime = new Date(comment.timestamp).toLocaleDateString("en-us", { day: "2-digit", month: "2-digit", year: "numeric" })          
+                        let datetime = new Date(comment.timestamp).toLocaleDateString("en-us", { day: "2-digit", month: "2-digit", year: "numeric" })
+
                         return (
                             <article className="comment" key={comment.id} title="Comments">
                                 <div className="comment__avatar">
